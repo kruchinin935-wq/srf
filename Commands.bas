@@ -90,10 +90,16 @@ Public Sub CommandSyncSORF(control As IRibbonControl)
     If Not WriteItemTotals(dealNode, mapping, message) _
     Then Err.Raise 1000, Description:=message
     
-    Dim chemistry As Collection
-    Dim chemistrySheet As Range
-    Set chemistrySheet = sorfDocument.Worksheets("Chemistry")
-    If Not LoadChemistry(chemistry, chemistrySheet, message) _
+    ' Parse Chemistry sheet similar to Items Breakdown
+    Set area = sorfDocument.Worksheets("Chemistry").UsedRange
+    
+    If Not ApplyMappingRules(area, rules.SelectSingleNode("table[@name=""Chemistry""]"), mapping, message) _
+    Then Err.Raise 1000, Description:=message
+    
+    If Not WriteChemistry(dealNode, mapping, message) _
+    Then Err.Raise 1000, Description:=message
+    
+    If Not WriteChemistryTotals(dealNode, mapping, message) _
     Then Err.Raise 1000, Description:=message
     
     sorfDocument.Save
@@ -225,6 +231,88 @@ Function WriteItems(node As CustomXMLNode, mapping As Collection, message As Str
     WriteItems = True
 End Function
 
+Function WriteChemistry(node As CustomXMLNode, mapping As Collection, message As String) As Boolean
+    
+    Dim parent As CustomXMLNode
+    node.AppendChildNode "CHEMISTRY", node.NamespaceURI
+    Set parent = node.LastChild
+    
+    ' Find the rightmost boundary similar to Items Breakdown
+    Dim rightBound As Range
+    Set rightBound = mapping("0").first.End(xlToRight)
+
+    Dim i As Integer
+    Dim chemNode As CustomXMLNode
+    For i = 1 To rightBound.Column
+        
+        parent.AppendChildNode "ELEMENT", parent.NamespaceURI
+        Set chemNode = parent.LastChild
+        
+        If Not WriteRow(i, chemNode, mapping) _
+        Then chemNode.Delete
+        
+    Next
+    
+    WriteChemistry = True
+End Function
+
+Function WriteChemistryTotals(node As CustomXMLNode, mapping As Collection, message As String) As Boolean
+    On Error GoTo Catch
+    
+    ' Find the Element header to identify chemistry structure
+    Dim elementHeaderMapping As Pair
+    If Not GetFiledByName(mapping, "Element", elementHeaderMapping) _
+    Then 
+        ' If no Element field, try to find Chemical Composition header
+        If Not GetFiledByName(mapping, "CHEMICAL COMPOSITION", elementHeaderMapping) _
+        Then Err.Raise 1000, Description:="Р’ РјР°РїРёРЅРіРµ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РїРѕР»Рµ С…РёРјРёС‡РµСЃРєРѕРіРѕ СЌР»РµРјРµРЅС‚Р°"
+    End If
+    
+    Dim elementHeaderCell As Range
+    Set elementHeaderCell = elementHeaderMapping.first
+    
+    ' Look for totals or summary row (could be named Total, Sum, Average etc.)
+    Dim totalHeaderCell As Range
+    Set totalHeaderCell = elementHeaderCell.EntireRow.Find("Total")
+    
+    If totalHeaderCell Is Nothing Then
+        ' Try other common names
+        Set totalHeaderCell = elementHeaderCell.EntireRow.Find("Sum")
+    End If
+    
+    If totalHeaderCell Is Nothing Then
+        ' No totals found, which is okay for chemistry data
+        WriteChemistryTotals = True
+        Exit Function
+    End If
+    
+    Dim totalCell As Range
+    Dim field As CField
+    
+    Dim entry As Pair
+    For Each entry In mapping
+        
+        Set field = entry.second
+        
+        If Not field.HasTotal Then GoTo Continue
+    
+        Set totalCell = totalHeaderCell.Offset(entry.first.Row - totalHeaderCell.Row, 0)
+               
+        SetNode node, field.GetTotal() & "_CHEMISTRY", field.GetType(), totalCell.Value
+        
+Continue:
+    Next
+    
+    WriteChemistryTotals = True
+Finally:
+    
+    Exit Function
+    
+Catch:
+    message = Err.Description
+    Resume Finally
+End Function
+
 Function WriteRow(index As Integer, node As CustomXMLNode, mapping As Collection) As Boolean
     
     Dim Pair As Pair
@@ -288,6 +376,147 @@ Function LoadChemistry(chemisrty As Collection, chemistrySheet As Worksheet, mes
     
     LoadChemistry = True
     
+End Function
+
+' New comprehensive chemistry parsing function similar to Items Breakdown
+Function ParseChemistryBreakdown(chemistryData As Collection, chemistrySheet As Worksheet, message As String) As Boolean
+    On Error GoTo Catch
+    
+    Set chemistryData = New Collection
+    Dim usedRange As Range
+    Set usedRange = chemistrySheet.UsedRange
+    
+    ' Find header row with "Element" or chemical elements
+    Dim headerRow As Range
+    Dim cell As Range
+    Dim rowNum As Integer
+    
+    For rowNum = 1 To usedRange.Rows.Count
+        For Each cell In usedRange.Rows(rowNum).Cells
+            If InStr(1, cell.Value, "Element", vbTextCompare) > 0 Then
+                Set headerRow = usedRange.Rows(rowNum)
+                Exit For
+            End If
+        Next
+        If Not headerRow Is Nothing Then Exit For
+    Next
+    
+    If headerRow Is Nothing Then
+        ' Try finding CHEMICAL COMPOSITION header
+        For rowNum = 1 To usedRange.Rows.Count
+            For Each cell In usedRange.Rows(rowNum).Cells
+                If InStr(1, cell.Value, "CHEMICAL COMPOSITION", vbTextCompare) > 0 Then
+                    ' Header is typically 1-2 rows below
+                    If rowNum + 2 <= usedRange.Rows.Count Then
+                        Set headerRow = usedRange.Rows(rowNum + 2)
+                    End If
+                    Exit For
+                End If
+            Next
+            If Not headerRow Is Nothing Then Exit For
+        Next
+    End If
+    
+    If headerRow Is Nothing Then
+        message = "РќРµ РЅР°Р№РґРµРЅР° СЃС‚СЂРѕРєР° Р·Р°РіРѕР»РѕРІРєРѕРІ РІ Р»РёСЃС‚Рµ Chemistry"
+        Exit Function
+    End If
+    
+    ' Parse chemical composition data
+    Dim dataRow As Range
+    Dim colIndex As Integer
+    Dim chemItem As Object
+    
+    ' Collect all grades/materials from header row
+    Dim grades As Collection
+    Set grades = New Collection
+    Dim gradeCell As Range
+    
+    For colIndex = 3 To headerRow.Columns.Count
+        Set gradeCell = headerRow.Cells(1, colIndex)
+        If Not IsEmpty(gradeCell.Value) And Trim(gradeCell.Value) <> "" _
+           And gradeCell.Value <> "min" And gradeCell.Value <> "max" And gradeCell.Value <> "aim" Then
+            grades.Add gradeCell.Value, CStr(colIndex)
+        End If
+    Next
+    
+    ' Parse element data for each grade
+    For rowNum = headerRow.Row + 1 To usedRange.Rows.Count
+        Set dataRow = usedRange.Rows(rowNum)
+        
+        ' Get element name from first column
+        Dim elementName As String
+        elementName = Trim(CStr(dataRow.Cells(1, 2).Value))
+        
+        If elementName <> "" And elementName <> "Element" Then
+            ' Create entry for this element
+            Set chemItem = CreateObject("Scripting.Dictionary")
+            chemItem.Add "Element", elementName
+            
+            ' Get values for each grade
+            Dim grade As Variant
+            For Each grade In grades
+                Dim gradeCol As Integer
+                gradeCol = CInt(grades.Item(CStr(grade)))
+                
+                ' Get min, max, aim values if they exist
+                Dim minVal As Variant, maxVal As Variant, aimVal As Variant
+                minVal = ""
+                maxVal = ""
+                aimVal = ""
+                
+                ' Check for min column
+                If gradeCol + 1 <= dataRow.Columns.Count Then
+                    If headerRow.Cells(1, gradeCol + 1).Value = "min" Then
+                        minVal = dataRow.Cells(1, gradeCol + 1).Value
+                    End If
+                End If
+                
+                ' Check for max column
+                If gradeCol + 2 <= dataRow.Columns.Count Then
+                    If headerRow.Cells(1, gradeCol + 2).Value = "max" Then
+                        maxVal = dataRow.Cells(1, gradeCol + 2).Value
+                    End If
+                End If
+                
+                ' Check for aim column
+                If gradeCol + 3 <= dataRow.Columns.Count Then
+                    If headerRow.Cells(1, gradeCol + 3).Value = "aim" Then
+                        aimVal = dataRow.Cells(1, gradeCol + 3).Value
+                    End If
+                End If
+                
+                ' Store values for this grade
+                chemItem.Add CStr(grade) & "_min", minVal
+                chemItem.Add CStr(grade) & "_max", maxVal
+                chemItem.Add CStr(grade) & "_aim", aimVal
+            Next
+            
+            chemistryData.Add chemItem
+        End If
+    Next
+    
+    ParseChemistryBreakdown = True
+    
+Finally:
+    Exit Function
+    
+Catch:
+    message = "РћС€РёР±РєР° РїСЂРё СЂР°Р·Р±РѕСЂРµ С…РёРјРёС‡РµСЃРєРѕРіРѕ СЃРѕСЃС‚Р°РІР°: " & Err.Description
+    ParseChemistryBreakdown = False
+    Resume Finally
+End Function
+
+' Helper function to check if a row is empty
+Function IsRowEmpty(row As Range) As Boolean
+    Dim cell As Range
+    For Each cell In row.Cells
+        If Not IsEmpty(cell.Value) And Trim(CStr(cell.Value)) <> "" Then
+            IsRowEmpty = False
+            Exit Function
+        End If
+    Next
+    IsRowEmpty = True
 End Function
 Function CreateDeal(dealPart As CustomXMLPart) As CustomXMLNode
     Dim node As CustomXMLNode
@@ -445,10 +674,10 @@ Function CheckPrerequisite(sorf As Workbook, message As String) As Boolean
         Exit Function
     End If
     
-'    If sorf.Worksheets("Chemistry") Is Nothing Then
-'        message = "Отсуствует страница Chemistry"
-'        Exit Function
-'    End If
+    If sorf.Worksheets("Chemistry") Is Nothing Then
+        message = "Отсуствует страница Chemistry"
+        Exit Function
+    End If
     
     If sorf.Worksheets("Items Breakdown") Is Nothing Then
         message = "Отсуствует страница Items Breakdown"
