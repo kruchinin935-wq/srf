@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+	<mapping>
+		<source version="7.9" target-namespace="urn:bitrix:deal">
+			<table name="Deal" sheet="SORF">
+				<field-group name="Contract Parties" filter="CONTRACT*PARTIES*">
+					<field>
+						<name>Contract Number</name>
+						<type>string</type>
+						<filter>Contract Number</filter>
+						<target>UF_CRM_CONTRACT_NUMBER</target>
+					</field>
+					<field>
+						<name>Price Confirmation Date</name>
+						<type>date</type>
+						<filter>*PRICE*CONFIRMATION*DATE*</filter>
+						<target>UF_CRM_PRICE_CONFIRMATION_DATE</target>
+					</field>
+					<field>
+						<name>Purchased from</name>
+						<type>string</type>
+						<filter>Purchased*from*</filter>
+						<target>UF_CRM_PURCHASED_FROM</target>
+					</field>
+					<field>
+						<name>Seller</name>
+						<type>string</type>
+						<filter>Seller*</filter>
+						<target>UF_CRM_SELLER</target>
+					</field>
+					<field>
+						<name>Intermediary trader 1</name>
+						<type>string</type>
+						<filter>Intermediary*trader*1</filter>
+						<target>UF_CRM_INTERTRADER1</target>
+					</field>
+					<field>
+						<name>Intermediary trader 2</name>
+						<type>string</type>
+						<filter>Intermediary*trader*2*</filter>
+						<target>UF_CRM_INTERTRADER2</target>
+					</field>
+					<field>
+						<name>Buyer Name</name>
+						<type>string</type>
+						<filter>BUYER*NAME*</filter>
+						<target>UF_CRM_BUYER_NAME</target>
+					</field>
+					<field>
+						<name>Buyer Address</name>
+						<type>string</type>
+						<filter>BUYER*ADDRESS*</filter>
+						<target>UF_CRM_BUYER_ADDRESS</target>
+					</field>
+					<field>
+						<name>End User Name</name>
+						<type>string</type>
+						<filter>END*USER*NAME*</filter>
+						<target>UF_CRM_END_USER</target>
+					</field>
+					<field>
+						<name>End User Address</name>
+						<type>string</type>
+						<filter>END*USER*ADDRESS*</filter>
+						<target>UF_CRM_END_USER_ADDRESS</target>
+					</field>
+					<field>
+						<name>Agent</name>
+						<type>string</type>
+						<filter>AGENT*</filter>
+						<target>UF_CRM_AGENT</target>
+					</field>
+				</field-group>
+				<field-group name="Product Specification" filter="PRODUCT*SPECIFICATION*">
+					<field>
+						<name>Product Type</name>
+						<type>string</type>
+						<filter>PRODUCT*TYPE*</filter>
+						<target>UF_CRM_PRODUCT_TYPE</target>
+					</field>
+					<field>
+						<name>QUALITY</name>
+						<type>string</type>
+						<filter>QUALITY*</filter>
+						<target>UF_CRM_QUALITY</target>
+					</field>
+					<field>
+						<name>Goods Description</name>
+						<type>string</type>
+						<filter>GOODS*DESCRIPTION*</filter>
+						<target>UF_CRM_GOODS_DESCRIPTION</target>
+					</field>
+					<field>
+						<name>Technical Document Reference</name>
+						<type>string</type>
+						<filter>TECHNICAL*DOCUMENT*Reference*</filter>
+						<target>UF_CRM_TECHNICAL_DOCUMENT_REFERENCE</target>
+					</field>
+					<field>
+						<name>Technical document type</name>
+						<type>string</type>
+						<filter>TECHNICAL*DOCUMENT*TYPE*</filter>
+						<target>UF_CRM_TECH_DOC_REFERENCE_TYPE</target>
+					</field>
+					<field>
+						<name>Technical document date</name>
+						<type>date</type>
+						<filter>TECHNICAL*DOCUMENT*DATE*</filter>
+						<target>UF_CRM_TECH_DOC_REFERENCE_DATE</target>
+					</field>
+					<field>
+						<name>Packing</name>
+						<type>string</type>
+						<filter>PACKING*</filter>
+						<target>UF_CRM_PACKING</target>
+					</field>
+					<field>
+						<name>Dunnage</name>
+						<type>string</type>
+						<filter>DUNNAGE*TYPE*</filter>
+						<target>UF_CRM_DUNNAGE_TYPE</target>
+					</field>
+					<field>
+						<name>Producer</name>
+						<type>string</type>
+						<filter>PRODUCER*</filter>
+						<target>UF_CRM_PRODUCER</target>
+					</field>
+					<field>
+						<name>Total Quantity</name>
+						<type>float</type>
+						<filter>TOTAL*QUANTITY*</filter>
+						<target>UF_CRM_TOTAL_QUANTITY</target>
+					</field>
+					<field>
+						<name>Quantity Tolerance</name>
+						<type>string</type>
+						<filter>QUANTITY*TOLERANCE*</filter>
+						<target>UF_CRM_QUANTITY_TOLERANCE</target>
+					</field>
+				</field-group>
+				<field-group name="Sales Price And Sales Contract Amount" filter="SALES*PRICE*CONTRACT*">
+					<field>
+						<name>Currency</name>
+						<type>string</type>
+						<filter>SALES*CURRENCY*</filter>
+						<target>UF_CRM_SALES_CURRENCY</target>
+					</field>
+					<field>
+						<name>Internal Base Price</name>
+						<type>float</type>
+						<filter>INTERNAL*BASE*PRICE*</filter>
+						<target>UF_CRM_INTERNAL_BASE_PRICE</target>
+					</field>
+					<field>
+						<name>Production Grade Cost</name>
+						<type>float</type>
+						<filter>PRODUCTION*GRADE*COST*</filter>
+						<target>UF_CRM_PRODUCTION_GRADE_COST</target>
+					</field>
+					<field>
+						<name>Sales Price</name>
+						<type>float</type>
+						<filter>SALES*PRICE*per*</filter>
+						<target>UF_CRM_SALES_PRICE</target>
+					</field>
+					<field>
+						<name>Total Contract Value</name>
+						<type>float</type>
+						<filter>TOTAL*CONTRACT*VALUE*</filter>
+						<target>UF_CRM_TOTAL_CONTRACT_VALUE</target>
+					</field>
+					<field>
+						<name>Commercial Grade Extra</name>
+						<type>float</type>
+						<filter>COMMERCIAL*GRADE*EXTRA*</filter>
+						<target>UF_CRM_COMMERCIAL_GRADE_EXTRA</target>
+					</field>
+				</field-group>
+				<field-group name="PAYMENT TERMS" filter="PAYMENT*TERMS*">
+					<field>
+						<name>Commercial Grade Extra</name>
+						<type>float</type>
+						<filter>COMMERCIAL*GRADE*EXTRA*</filter>
+						<target>UF_CRM_COMMERCIAL_GRADE_EXTRA</target>
+					</field>
+					<field>
+						<name>Payment Terms Category</name>
+						<type>string</type>
+						<filter>PAYMENT*TERMS*CATEGORY*</filter>
+						<target>UF_CRM_PAYMENT_TERMS_CATEGORY</target>
+					</field>
+					<field>
+						<name>Prepayment Pct</name>
+						<type>float</type>
+						<filter>PREPAYMENT*</filter>
+						<target>UF_CRM_PREPAYMENT_PERCENT</target>
+					</field>
+					<field>
+						<name>Prepayment date / LC date</name>
+						<type>date</type>
+						<filter>Prepayment*LC*date*</filter>
+						<target>UF_CRM_PREPAYMENT_LC_DATE</target>
+					</field>
+					<field>
+						<name>Payment code (SAP)</name>
+						<type>string</type>
+						<filter>PAYMENT*CODE*SAP*</filter>
+						<target>UF_CRM_PAYMENT_CODE_SAP</target>
+					</field>
+
+
+					<field>
+						<name>Payment Terms</name>
+						<type>string</type>
+						<filter>PAYMENT*TERMS*details:</filter>
+						<target>UF_CRM_PAYMENT_TERMS</target>
+					</field>
+				</field-group>
+				<field-group name="Other Sales Contract Details" filter="OTHER*SALES*CONTRACT*">
+					<field>
+						<name>Production Month</name>
+						<type>date</type>
+						<filter>PRODUCTION*MONTH*</filter>
+						<target>UF_CRM_PRODUCTION_MONTH</target>
+					</field>
+					<field>
+						<name>Delivery Terms</name>
+						<type>string</type>
+						<filter>DELIVERY*TERMS*</filter>
+						<target>UF_CRM_DELIVERY_TERMS</target>
+					</field>
+					<field>
+						<name>Incoterms</name>
+						<type>string</type>
+						<filter>INCOTERMS*</filter>
+						<target>UF_CRM_INCOTERMS</target>
+					</field>
+					<field>
+						<name>Shipment LSD</name>
+						<type>date</type>
+						<filter>SHIPMENT*LSD*</filter>
+						<target>UF_CRM_SHIPMENT</target>
+					</field>
+					<field>
+						<name>Port/Station Of Loading Contract</name>
+						<type>string</type>
+						<filter>*PORT*STATION*LOADING*Contract*</filter>
+						<target>UF_CRM_PORT_STATION_OF_LOADING</target>
+					</field>
+					<field>
+						<name>Port/Station Of Loading Planned</name>
+						<type>string</type>
+						<filter>*PORT*STATION*LOADING*PLANNED*</filter>
+						<target>UF_CRM_PORT_STATION_OF_LOADING_PLANNED</target>
+					</field>
+					<field>
+						<name>Port/Station Of Discharge</name>
+						<type>string</type>
+						<filter>*PORT*STATION*DISCHARGE*</filter>
+						<target>UF_CRM_PORT_STATION_OF_DISCHARGE</target>
+					</field>
+					<field>
+						<name>Destination Country</name>
+						<type>string</type>
+						<filter>DESTINATION*COUNTRY*</filter>
+						<target>UF_CRM_DESTINATION_COUNTRY</target>
+					</field>
+					<field>
+						<name>Re-Sale Allowed?</name>
+						<type>string</type>
+						<filter>RE*SALE*ALLOWED*</filter>
+						<target>UF_CRM_RESALE_ALLOWED</target>
+					</field>
+					<field>
+						<name>Applicable Law</name>
+						<type>string</type>
+						<filter>Applicable*Law</filter>
+						<target>UF_CRM_APPLICABLE_LAW</target>
+					</field>
+					<field>
+						<name>Remarks</name>
+						<type>string</type>
+						<filter>Remarks*</filter>
+						<target>UF_CRM_REMARKS</target>
+					</field>
+				</field-group>
+				<field-group name="Purchase Contract Details" filter="PURCHASE CONTRACT*">
+					<field>
+						<name>Currency</name>
+						<type>string</type>
+						<filter>PURCHASE CURRENCY*</filter>
+						<target>UF_CRM_PURCHASE_CURRENCY</target>
+					</field>
+					<field>
+						<name>Currencies Exchange</name>
+						<type>string</type>
+						<filter>CURRENCIES EXCHANGE*</filter>
+						<target>UF_CRM_CURRENCIES_EXCHANGE</target>
+					</field>
+					<field>
+						<name>CURRENCIES EXCHANGE (secondary)</name>
+						<type>string</type>
+						<filter>CURRENCIES EXCHANGE (secondary)*</filter>
+						<target>UF_CRM_CURRENCIES_EXCHANGE2</target>
+					</field>
+					<field>
+						<name>Exchange Rate</name>
+						<type>float</type>
+						<filter>EXCHANGE RATE*</filter>
+						<target>UF_CRM_EXCHANGE_RATE</target>
+					</field>
+					<field>
+						<name>EXCHANGE RATE (secondary)</name>
+						<type>float</type>
+						<filter>EXCHANGE RATE (secondary)*</filter>
+						<target>UF_CRM_EXCHANGE_RATE2</target>
+					</field>
+				</field-group>
+				<field-group name="OTHER DETAILS" filter="OTHER DETAILS*">
+					<field>
+						<name>Latest revision notes</name>
+						<type>string</type>
+						<filter>Latest*revision*notes*</filter>
+						<target>UF_CRM_LAST_ADDITIONAL_COMMENT</target>
+					</field>
+				</field-group>
+			</table>
+			<table name="Items" sheet="Items Breakdown">
+				<field-group name="Sales Contract" filter="SALES CONTRACT*">
+					<field>
+						<name>ESSN</name>
+						<type>string</type>
+						<filter>SAP*ESSN*</filter>
+						<target>UF_CRM_SAP_ESSN_MTRL_NO</target>
+						<discriminator>true</discriminator>
+					</field>
+					<field>
+						<name>Mill</name>
+						<type>string</type>
+						<filter>Mill*</filter>
+						<target>UF_CRM_MILL</target>
+					</field>
+					<field>
+						<name>Item Number</name>
+						<type>integer</type>
+						<filter>Item*No*</filter>
+						<target>UF_CRM_ITEM_NO</target>
+					</field>
+					<field>
+						<name>Lot Number</name>
+						<type>integer</type>
+						<filter>Lot*No*</filter>
+						<target>UF_CRM_LOT_NO</target>
+					</field>
+					<field>
+						<name>HS code</name>
+						<type>string</type>
+						<filter>HS*code*</filter>
+						<target>UF_CRM_HS_CODE</target>
+					</field>
+					<field>
+						<name>Product standard</name>
+						<type>string</type>
+						<filter>Product*standard*</filter>
+						<target>UF_CRM_PROD_STANDART</target>
+					</field>
+					<field>
+						<name>Drawing</name>
+						<type>string</type>
+						<filter>Drawing*</filter>
+						<target>UF_CRM_DRAWING</target>
+					</field>
+					<field>
+						<name>Item mill code</name>
+						<type>string</type>
+						<filter>Item*mill*code*</filter>
+						<target>UF_CRM_IT_MILL_CODE</target>
+					</field>
+					<field>
+						<name>KG/M</name>
+						<type>float</type>
+						<filter>KG/M*</filter>
+						<target>UF_CRM_KG_M</target>
+					</field>
+					<field>
+						<name>Wire Diameter, MM</name>
+						<type>float</type>
+						<filter>Wire Diameter*</filter>
+						<target>UF_CRM_WIRE_DIAMETER</target>
+					</field>
+					<field>
+						<name>Coil weight</name>
+						<type>string</type>
+						<filter>Coil weight*</filter>
+						<target>UF_CRM_COIL_WEIGHT</target>
+					</field>
+					<field>
+						<name>Coil inner diameter</name>
+						<type>string</type>
+						<filter>Coil inner diameter*</filter>
+						<target>UF_CRM_COIL_INNER_DIAMETER</target>
+					</field>
+					<field>
+						<name>Coils with 4 ends in the order</name>
+						<type>float</type>
+						<filter>Coils with 4 ends in*</filter>
+						<target>UF_CRM_COILS_WITH_ENDS</target>
+					</field>
+					<field>
+						<name>Ball Diameter</name>
+						<type>float</type>
+						<filter>Ball Diameter*</filter>
+						<target>UF_CRM_BALL_DIAMETER</target>
+					</field>
+					<field>
+						<name>Nominal Diameter and Tolerance</name>
+						<type>string</type>
+						<filter>Nominal Diameter and Tolerance*</filter>
+						<target>UF_CRM_NOMINAL_DIAMETER_TOLERANCE</target>
+					</field>
+					<field>
+						<name>Hardness group</name>
+						<type>float</type>
+						<filter>Hardness group*</filter>
+						<target>UF_CRM_HARDNESS_GROUP</target>
+					</field>
+					<field>
+						<name>Min surface hardness</name>
+						<type>float</type>
+						<filter>Min surface hardness*</filter>
+						<target>UF_CRM_MIN_SURFACE_HARDNESS</target>
+					</field>
+					<field>
+						<name>Min hardness at 1/2 R</name>
+						<type>float</type>
+						<filter>Min hardness at 1/2*</filter>
+						<target>UF_CRM_MIN_HARDNESS</target>
+					</field>
+					<field>
+						<name>Nominal Mass  of one ball</name>
+						<type>float</type>
+						<filter>Nominal Mass*of*one ball*</filter>
+						<target>UF_CRM_NOMINAL_MASS</target>
+					</field>
+					<field>
+						<name>Profile Wheels</name>
+						<type>string</type>
+						<filter>Profile Wheels*</filter>
+						<target>UF_CRM_PROFILE_WHEELS</target>
+					</field>
+					<field>
+						<name>Static Imbalance</name>
+						<type>string</type>
+						<filter>Static Imbalance*</filter>
+						<target>UF_CRM_STATIC_IMBALANCE</target>
+					</field>
+					<field>
+						<name>Oil Bore</name>
+						<type>string</type>
+						<filter>Oil Bore*</filter>
+						<target>UF_CRM_OIL_BORE</target>
+					</field>
+					<field>
+						<name>Plug</name>
+						<type>string</type>
+						<filter>Plug*</filter>
+						<target>UF_CRM_PLUG</target>
+					</field>
+					<field>
+						<name>Shipping Unit Weight</name>
+						<type>float</type>
+						<filter>Shipping Unit Weight*</filter>
+						<target>UF_CRM_SHIPPING_UNIT_WEIGHT</target>
+					</field>
+					<field>
+						<name>Shipping Unit Quantity</name>
+						<type>float</type>
+						<filter>Shipping Unit Quantity*</filter>
+						<target>UF_CRM_SHIPPING_UNIT_QUANTITY</target>
+					</field>
+					<field>
+						<name>Protection/Painting</name>
+						<type>string</type>
+						<filter>Protection/Painting*</filter>
+						<target>UF_CRM_PROTECTION_PAINTING</target>
+					</field>
+					<field>
+						<name>Inspection</name>
+						<type>string</type>
+						<filter>Inspection*</filter>
+						<target>UF_CRM_INSPECTION</target>
+					</field>
+					<field>
+						<name>PRODUCT SUB-TYPE</name>
+						<type>string</type>
+						<filter>PRODUCT SUB-TYPE*</filter>
+						<target>UF_CRM_SUB_TYPE</target>
+					</field>
+					<field>
+						<name>ADD TYPE PARAMETER</name>
+						<type>string</type>
+						<filter>ADD TYPE PARAMETER*</filter>
+						<target>UF_CRM_ADD_TYPE_PAR</target>
+					</field>
+					<field>
+						<name>Grade</name>
+						<type>string</type>
+						<filter>Grade</filter>
+						<target>UF_CRM_GRADE</target>
+					</field>
+					<field>
+						<name>Section size</name>
+						<type>string</type>
+						<filter>*Section*size*</filter>
+						<target>UF_CRM_SECTION_SIZE</target>
+					</field>
+					<field>
+						<name>Length</name>
+						<type>float</type>
+						<filter>Length,*</filter>
+						<target>UF_CRM_LENGTH</target>
+					</field>
+					<field>
+						<name>Length Tolerance</name>
+						<type>string</type>
+						<filter>*Length*tolerance*</filter>
+						<target>UF_CRM_LENGTH_TOLERANCE</target>
+					</field>
+					<field>
+						<name>Color Marking</name>
+						<type>string</type>
+						<filter>COLOR*MARKING*</filter>
+						<target>UF_CRM_COLOR_MARKING</target>
+					</field>
+					<field>
+						<name>Additional Marking comments</name>
+						<type>string</type>
+						<filter>Additional*MARKING*comments*</filter>
+						<target>UF_CRM_ADDITIONAL_MARKING_COMMENTS</target>
+					</field>
+
+					<!-- Для совместимости сконвертированых файлов предыдущих версий --> 
+					<field legacy="yes">
+						<name>Short Slabs</name>
+						<type>string</type>
+						<filter>Short*slabs*</filter>
+						<target>UF_CRM_SHORT_ITEMS</target>
+					</field>
+					<field legacy="yes">
+						<name>Short slabs, max pct</name>
+						<type>string</type>
+						<filter>Short*slabs*max*</filter>
+						<target>UF_CRM_SHORT_ITEMS_MAX_PERCENT</target>
+					</field>
+					<field>
+						<name>Short Items</name>
+						<type>string</type>
+						<filter>Short*items*</filter>
+						<target>UF_CRM_SHORT_ITEMS</target>
+					</field>
+					<field>
+						<name>Short Items Pct</name>
+						<type>string</type>
+						<filter>Short*items*max*</filter>
+						<target>UF_CRM_SHORT_ITEMS_MAX_PERCENT</target>
+					</field>
+					<field>
+						<name>Packing</name>
+						<type>string</type>
+						<filter>PACKING*</filter>
+						<target>UF_CRM_PACKING</target>
+					</field>
+					<field>
+						<name>Packing</name>
+						<type>string</type>
+						<filter>PACKING*DETAILS*</filter>
+						<target>UF_CRM_PACKING_DETAILS</target>
+					</field>
+					<field>
+						<name>Comments</name>
+						<type>string</type>
+						<filter>Comments*</filter>
+						<target>UF_CRM_COMMENTS</target>
+					</field>
+					<field>
+						<name>Volume</name>
+						<type>float</type>
+						<filter>VOLUME*</filter>
+						<discriminator>true</discriminator>
+						<target>UF_CRM_VOLUME</target>
+					</field>
+					<field>
+						<name>Volume tolerance(plus)</name>
+						<type>float</type>
+						<filter>Volume*tolerance*+*%*</filter>
+						<target>UF_CRM_VOLUME_TOLERANCE_PLUS</target>
+					</field>
+					<field>
+						<name>Volume tolerance(min)</name>
+						<type>float</type>
+						<filter>Volume*tolerance*-*%*</filter>
+						<target>UF_CRM_VOLUME_TOLERANCE_MIN</target>
+					</field>	
+					<field>
+						<name>Price</name>
+						<type>float</type>
+						<filter>PRICE*</filter>
+						<target>UF_CRM_PRICE</target>
+					</field>
+				</field-group>
+				<field-group name="Internal Notes" filter="INTERNAL*NOTES">
+					<field>
+						<name>Internal comments</name>
+						<type>string</type>
+						<filter>Internal comments</filter>
+						<target>UF_CRM_INTERNAL_COMMENTS</target>
+					</field>
+					<field>
+						<name>Material Configuration Notes</name>
+						<type>string</type>
+						<filter>Material configuration notes*</filter>
+						<target>UF_CRM_MATERIAL_CONFIGURATION_NOTES</target>
+					</field>
+					<field>
+						<name>Slab weight</name>
+						<type>float</type>
+						<filter>Slab weight*</filter>
+						<target>UF_CRM_SLAB_WEIGHT</target>
+					</field>
+					<field>
+						<name>Slabs Per Railcar</name>
+						<type>integer</type>
+						<filter>Slabs per railcar</filter>
+						<target>UF_CRM_SLABS_PER_RAILCAR</target>
+					</field>
+				</field-group>
+				<field-group name="Inland transportation" filter="INLAND*TRANSPORTATION">
+					<field>
+						<name>Load port / point of delivery</name>
+						<type>string</type>
+						<filter>Load*port*point*of*delivery*</filter>
+						<target>UF_CRM_IB_LOAD_PORT</target>
+					</field>
+					<field>
+						<name>Item weight, MT</name>
+						<type>float</type>
+						<filter>Item weight*</filter>
+						<target>UF_CRM_ITEM_WEIGHT</target>
+					</field>
+					<field>
+						<name>Items per railcar</name>
+						<type>float</type>
+						<filter>Items per railcar*</filter>
+						<target>UF_CRM_ITEMS_PER_RAILCAR</target>
+					</field>
+					<field>
+						<name>Railcar Weight</name>
+						<type>float</type>
+						<filter>Railcar weight*</filter>
+						<target>UF_CRM_RAILCAR_WEIGHT</target>
+					</field>
+				</field-group>
+				<field-group name="Sales Price Calculation" filter="SALES PRICE calculation*">
+					<field>
+						<name>Base Price</name>
+						<type>float</type>
+						<filter>BASE PRICE*</filter>
+						<target>UF_CRM_BASE_PRICE</target>
+					</field>
+					<field>
+						<name>Logistics Comm. Extra</name>
+						<type>string</type>
+						<filter>LOGISTICS*COMM*EXTRA*</filter>
+						<target>UF_CRM_LOGISTICS_COMM_EXTRA</target>
+					</field>
+
+					<field>
+						<name>PROD-TY COMM. EXTRA</name>
+						<type>string</type>
+						<filter>PROD-TY COMM. EXTRA*</filter>
+						<target>UF_CRM_PROD_COMM_EXTRA</target>
+					</field>
+					<field>
+						<name>PROD-TY LOSS</name>
+						<type>string</type>
+						<filter>PROD-TY LOSS*</filter>
+						<target>UF_CRM_PROD_LOSS</target>
+					</field>
+					<field>
+						<name>Prod. Grade Extra</name>
+						<type>float</type>
+						<filter>PROD*GRADE*EXTRA*</filter>
+						<target>UF_CRM_PROD_GRADE_EXTRA</target>
+					</field>
+					<field>
+						<name>Comm. Grade Extra</name>
+						<type>float</type>
+						<filter>COMM*GRADE*EXTRA*</filter>
+						<target>UF_CRM_COMM_GRADE_EXTRA</target>
+					</field>
+				</field-group>
+				<field-group name="Final Purchase Price" filter="FINAL*PURCHASE*PRICE*">
+					<field>
+						<name>Price</name>
+						<type>float</type>
+						<filter>PRICE*</filter>
+						<target>UF_CRM_PRICE_PURCHASE</target>
+					</field>
+					<field>
+						<name>Amount</name>
+						<type>float</type>
+						<filter>AMOUNT*</filter>
+						<target>UF_CRM_AMOUNT_PURCHASE</target>
+					</field>
+				</field-group>
+				<field-group name="Purchase Price Calculation" filter="PURCHASE*PRICE*calculation*">
+					<field>
+						<name>Sales Price Base</name>
+						<type>float</type>
+						<filter>Sales price base*</filter>
+						<target>UF_CRM_SALES_PRICE_BASE</target>
+					</field>
+					<field>
+						<name>Sea Freight</name>
+						<type>float</type>
+						<filter>Sea Freight,*</filter>
+						<target>UF_CRM_SEA_FREIGHT</target>
+					</field>
+					<field>
+						<name>Sea Freight Commission Pct</name>
+						<type>float</type>
+						<filter>Sea Freight Commission*%</filter>
+						<target>UF_CRM_SEA_FREIGHT_COMMISSION_PERCENT</target>
+					</field>
+					<field>
+						<name>Sea Freight Commission Unit</name>
+						<type>float</type>
+						<filter>Sea Freight Commission*MT</filter>
+						<target>UF_CRM_SEA_FREIGHT_COMMISSION_PER_MT</target>
+					</field>
+					<field>
+						<name>Marine Insurance Pct</name>
+						<type>float</type>
+						<filter>Marine Insurance*%</filter>
+						<target>UF_CRM_MARINE_INSURANCE_PERCENT</target>
+					</field>
+					<field>
+						<name>Marine Insurance Unit</name>
+						<type>float</type>
+						<filter>Marine Insurance*MT</filter>
+						<target>UF_CRM_MARINE_INSURANCE_PER_MT</target>
+					</field>
+					<field>
+						<name>Agent Commissions Pct</name>
+						<type>float</type>
+						<filter>Agent Commissions*%</filter>
+						<target>UF_CRM_AGENT_COMMISSIONS_PERCENT</target>
+					</field>
+					<field>
+						<name>Agent Commissions Unit</name>
+						<type>float</type>
+						<filter>Agent Commissions*MT</filter>
+						<target>UF_CRM_AGENT_COMMISSIONS_PER_MT</target>
+					</field>
+					<field>
+						<name>Additional Transport Charges</name>
+						<type>float</type>
+						<filter>Additional transport charges*</filter>
+						<target>UF_CRM_ADDITIONAL_TRANSPORT_CHARGES</target>
+					</field>
+					<field>
+						<name>Additional Inspection Costs</name>
+						<type>float</type>
+						<filter>Additional inspection costs*</filter>
+						<target>UF_CRM_ADDITIONAL_INSPECTION_COSTS</target>
+					</field>
+					<field>
+						<name>Transport costs at destination</name>
+						<type>float</type>
+						<filter>Transport*costs*destination, per MT*</filter>
+						<target>UF_CRM_TRANSPORT_COSTS_DESTINATION</target>
+					</field>
+					<field>
+						<name>Import duty tax</name>
+						<type>float</type>
+						<filter>Import*duty*tax*</filter>
+						<target>UF_CRM_IMPORT_DUTY_TAX</target>
+					</field>
+					<field>
+						<name>Fixed costs Per Unit</name>
+						<type>string</type>
+						<filter>Fixed*costs*per*MT*</filter>
+						<target>UF_CRM_FIXED_COSTS</target>
+					</field>
+					<field>
+						<name>Finance Cost Pct</name>
+						<type>float</type>
+						<filter>Finance Cost*%</filter>
+						<target>UF_CRM_FINANCE_COST_PERCENT</target>
+					</field>
+					<field>
+						<name>Finance Cost Per Unit</name>
+						<type>float</type>
+						<filter>Finance Cost*MT</filter>
+						<target>UF_CRM_FINANCE_COST_PER_MT</target>
+					</field>
+					<field>
+						<name>Margin Pct</name>
+						<type>float</type>
+						<filter>Margin*EBITDA*%</filter>
+						<target>UF_CRM_MARGIN_PERCENT</target>
+					</field>
+					<field>
+						<name>Margin Per Unit</name>
+						<type>float</type>
+						<filter>Margin*EBITDA*MT</filter>
+						<target>UF_CRM_MARGIN_PER_MT</target>
+					</field>
+					<field>
+						<name>Custom price adjustment, per MT</name>
+						<type>float</type>
+						<filter>Custom*price*adjustment*</filter>
+						<target>UF_CRM_REBATE</target>
+					</field>
+					<field>
+						<name>Trading Margin Tot Pct</name>
+						<type>float</type>
+						<filter>Trading Margin tot*%</filter>
+						<target>UF_CRM_TRADING_MARGIN_TOTAL_PERCENT</target>
+					</field>
+					<field>
+						<name>Trading Margin Tot Per Unit</name>
+						<type>float</type>
+						<filter>Trading Margin tot*MT</filter>
+						<target>UF_CRM_TRADING_MARGIN_TOTAL_PER_MT</target>
+					</field>
+					<field>
+						<name>Purchase Price</name>
+						<type>float</type>
+						<filter>Purchase Price*per*MT</filter>
+						<target>UF_CRM_PURCHASE_PRICE_AT_FOB</target>
+					</field>
+				</field-group>
+				<field-group name="TRADERS SCHEME" filter="TRADERS SCHEME*">
+					<field>
+						<name>BUYER</name>
+						<type>string</type>
+						<filter>BUYER*</filter>
+						<target>UF_CRM_IB_BUYER</target>
+					</field>
+					<field>
+						<name>SELLER</name>
+						<type>string</type>
+						<filter>SELLER*</filter>
+						<target>UF_CRM_IB_SELLER</target>
+					</field>
+					<field>
+						<name>Intermediary trader 1</name>
+						<type>string</type>
+						<filter>Intermediary trader 1*</filter>
+						<target>UF_CRM_IB_INTERTRADER1</target>
+					</field>
+					<field>
+						<name>Intermediary trader 2</name>
+						<type>string</type>
+						<filter>Intermediary trader 2*</filter>
+						<target>UF_CRM_IB_INTERTRADER2</target>
+					</field>
+					<field>
+						<name>Purchased from</name>
+						<type>string</type>
+						<filter>Purchased from*</filter>
+						<target>UF_CRM_IB_PURCHASED_FROM</target>
+					</field>
+				</field-group>
+				<field-group name="Item Details" filter="*">
+					<field discriminator="true">
+						<n>Item Number</n>
+						<type>integer</type>
+						<filter>Item*Number*</filter>
+						<filter>Item*No*</filter>
+						<filter>Item*#*</filter>
+						<target>ITEM_NUMBER</target>
+					</field>
+					<field>
+						<n>Grade</n>
+						<type>string</type>
+						<filter>Grade*</filter>
+						<filter>Material*Grade*</filter>
+						<target>GRADE</target>
+					</field>
+					<field>
+						<n>Thickness</n>
+						<type>float</type>
+						<filter>Thickness*</filter>
+						<filter>THK*</filter>
+						<target>THICKNESS</target>
+					</field>
+					<field>
+						<n>Width</n>
+						<type>float</type>
+						<filter>Width*</filter>
+						<filter>W*</filter>
+						<target>WIDTH</target>
+					</field>
+					<field>
+						<n>Length</n>
+						<type>float</type>
+						<filter>Length*</filter>
+						<filter>L*</filter>
+						<target>LENGTH</target>
+					</field>
+					<field>
+						<n>Quantity</n>
+						<type>float</type>
+						<filter>Quantity*</filter>
+						<filter>QTY*</filter>
+						<filter>Pcs*</filter>
+						<target>QUANTITY</target>
+						<total>TOTAL_QUANTITY</total>
+					</field>
+					<field>
+						<n>Weight</n>
+						<type>float</type>
+						<filter>Weight*</filter>
+						<filter>WT*</filter>
+						<filter>MT*</filter>
+						<target>WEIGHT</target>
+						<total>TOTAL_WEIGHT</total>
+					</field>
+					<field>
+						<n>Unit Price</n>
+						<type>float</type>
+						<filter>Unit*Price*</filter>
+						<filter>Price*</filter>
+						<target>UNIT_PRICE</target>
+					</field>
+					<field>
+						<n>Total Price</n>
+						<type>float</type>
+						<filter>Total*Price*</filter>
+						<filter>Amount*</filter>
+						<filter>Total*</filter>
+						<target>TOTAL_PRICE</target>
+						<total>GRAND_TOTAL</total>
+					</field>
+					<field>
+						<n>Remarks</n>
+						<type>string</type>
+						<filter>Remarks*</filter>
+						<filter>Comments*</filter>
+						<filter>Notes*</filter>
+						<target>REMARKS</target>
+					</field>
+				</field-group>
+			</table>
+			<table name="Chemistry" sheet="Chemistry">
+				<field-group name="Chemical Elements" filter="*ELEMENT*">
+					<field discriminator="true">
+						<n>Element</n>
+						<type>string</type>
+						<filter>Element*</filter>
+						<filter>Chemical*Element*</filter>
+						<target>ELEMENT_NAME</target>
+					</field>
+					<field>
+						<n>C</n>
+						<type>float</type>
+						<filter>C</filter>
+						<filter>Carbon*</filter>
+						<target>CARBON</target>
+					</field>
+					<field>
+						<n>MN</n>
+						<type>float</type>
+						<filter>MN*</filter>
+						<filter>Mn*</filter>
+						<filter>Manganese*</filter>
+						<target>MANGANESE</target>
+					</field>
+					<field>
+						<n>Si</n>
+						<type>float</type>
+						<filter>Si*</filter>
+						<filter>Silicon*</filter>
+						<target>SILICON</target>
+					</field>
+					<field>
+						<n>P</n>
+						<type>float</type>
+						<filter>P</filter>
+						<filter>Phosphorus*</filter>
+						<target>PHOSPHORUS</target>
+					</field>
+					<field>
+						<n>S</n>
+						<type>float</type>
+						<filter>S</filter>
+						<filter>Sulfur*</filter>
+						<filter>Sulphur*</filter>
+						<target>SULFUR</target>
+					</field>
+					<field>
+						<n>Cr</n>
+						<type>float</type>
+						<filter>Cr*</filter>
+						<filter>Chromium*</filter>
+						<target>CHROMIUM</target>
+					</field>
+					<field>
+						<n>Ni</n>
+						<type>float</type>
+						<filter>Ni*</filter>
+						<filter>Nickel*</filter>
+						<target>NICKEL</target>
+					</field>
+					<field>
+						<n>Mo</n>
+						<type>float</type>
+						<filter>Mo*</filter>
+						<filter>Molybdenum*</filter>
+						<target>MOLYBDENUM</target>
+					</field>
+					<field>
+						<n>Cu</n>
+						<type>float</type>
+						<filter>Cu*</filter>
+						<filter>Copper*</filter>
+						<target>COPPER</target>
+					</field>
+					<field>
+						<n>V</n>
+						<type>float</type>
+						<filter>V</filter>
+						<filter>Vanadium*</filter>
+						<target>VANADIUM</target>
+					</field>
+					<field>
+						<n>Nb</n>
+						<type>float</type>
+						<filter>Nb*</filter>
+						<filter>Niobium*</filter>
+						<target>NIOBIUM</target>
+					</field>
+					<field>
+						<n>Ti</n>
+						<type>float</type>
+						<filter>Ti*</filter>
+						<filter>Titanium*</filter>
+						<target>TITANIUM</target>
+					</field>
+					<field>
+						<n>Al</n>
+						<type>float</type>
+						<filter>Al*</filter>
+						<filter>Aluminum*</filter>
+						<filter>Aluminium*</filter>
+						<target>ALUMINUM</target>
+					</field>
+					<field>
+						<n>N</n>
+						<type>float</type>
+						<filter>N</filter>
+						<filter>Nitrogen*</filter>
+						<target>NITROGEN</target>
+					</field>
+					<field>
+						<n>B</n>
+						<type>float</type>
+						<filter>B</filter>
+						<filter>Boron*</filter>
+						<target>BORON</target>
+					</field>
+				</field-group>
+				<field-group name="Material Grades" filter="*GRADE*">
+					<field>
+						<n>Grade</n>
+						<type>string</type>
+						<filter>*A36*</filter>
+						<filter>*A516*</filter>
+						<filter>*A572*</filter>
+						<filter>*Grade*</filter>
+						<filter>*Material*</filter>
+						<target>MATERIAL_GRADE</target>
+					</field>
+					<field>
+						<n>Min Value</n>
+						<type>float</type>
+						<filter>min*</filter>
+						<filter>Min*</filter>
+						<filter>Minimum*</filter>
+						<target>MIN_VALUE</target>
+					</field>
+					<field>
+						<n>Max Value</n>
+						<type>float</type>
+						<filter>max*</filter>
+						<filter>Max*</filter>
+						<filter>Maximum*</filter>
+						<target>MAX_VALUE</target>
+					</field>
+					<field>
+						<n>Aim Value</n>
+						<type>float</type>
+						<filter>aim*</filter>
+						<filter>Aim*</filter>
+						<filter>Target*</filter>
+						<target>AIM_VALUE</target>
+					</field>
+					<field>
+						<n>Specification</n>
+						<type>string</type>
+						<filter>Specification*</filter>
+						<filter>Spec*</filter>
+						<filter>Standard*</filter>
+						<target>SPECIFICATION</target>
+					</field>
+				</field-group>
+				<field-group name="Chemical Composition" filter="*CHEMICAL*COMPOSITION*">
+					<field>
+						<n>CHEMICAL COMPOSITION</n>
+						<type>string</type>
+						<filter>CHEMICAL*COMPOSITION*</filter>
+						<target>CHEMICAL_COMPOSITION_HEADER</target>
+					</field>
+					<field>
+						<n>Material Configuration</n>
+						<type>string</type>
+						<filter>Material*configuration*</filter>
+						<filter>Material*config*</filter>
+						<target>MATERIAL_CONFIGURATION</target>
+					</field>
+					<field>
+						<n>Heat Number</n>
+						<type>string</type>
+						<filter>Heat*Number*</filter>
+						<filter>Heat*No*</filter>
+						<filter>Heat*#*</filter>
+						<target>HEAT_NUMBER</target>
+					</field>
+					<field>
+						<n>Certificate Number</n>
+						<type>string</type>
+						<filter>Certificate*Number*</filter>
+						<filter>Certificate*No*</filter>
+						<filter>Cert*No*</filter>
+						<target>CERTIFICATE_NUMBER</target>
+					</field>
+					<field>
+						<n>Test Date</n>
+						<type>date</type>
+						<filter>Test*Date*</filter>
+						<filter>Testing*Date*</filter>
+						<target>TEST_DATE</target>
+					</field>
+				</field-group>
+			</table>
+		</source>
+	</mapping>
+</configuration>
